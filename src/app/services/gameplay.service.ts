@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Correctness } from '../interfaces/correctness.interface';
 import { Sign } from '../interfaces/sign.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameplayService {
+  public randomCombination: Sign[];
+
   public availableSigns: Sign[] = [
-    { id: 1, name: 'name1', icon: 'android', color: '#82E0AA' },
-    { id: 2, name: 'name2', icon: 'favorite', color: '#F1948A' },
-    { id: 3, name: 'name3', icon: 'thumb_up', color: '#E59866' },
-    { id: 4, name: 'name4', icon: 'add', color: '#BB8FCE' },
-    { id: 5, name: 'name5', icon: 'mail', color: '#85C1E9' },
-    { id: 6, name: 'name6', icon: 'insert_emoticon', color: '#F7DC6F' },
+    { id: 1, name: 'knight', icon: '♞', color: '#3498DB' },
+    { id: 2, name: 'club', icon: '♣️', color: '#2C3E50' },
+    { id: 3, name: 'spade', icon: '♠️', color: '#2C3E50' },
+    { id: 4, name: 'heart', icon: '♥️', color: '#E74C3C' },
+    { id: 5, name: 'diamond', icon: '♦️', color: '#E74C3C' },
+    { id: 6, name: 'star', icon: '★', color: '#F1C40F' },
   ];
 
   public tryOneCombination: (Sign | null)[] = [null, null, null, null];
@@ -42,7 +45,6 @@ export class GameplayService {
       const indexOfFirstEmpty = combination.indexOf(null);
       if (indexOfFirstEmpty !== -1) {
         combination[indexOfFirstEmpty] = sign;
-        console.log(combination);
         return;
       }
     }
@@ -55,5 +57,45 @@ export class GameplayService {
 
   public increaseCurrentTry() {
     this.currentTry++;
+  }
+
+  public saveRandomCombination() {
+    this.randomCombination = this._getRadnomCombination();
+  }
+
+  public checkCorectnessOfCombination(indexInCombination: number): Correctness {
+    const combinationToCheck = this.allCombinations[indexInCombination];
+    let correctAndInPlace = 0;
+    let correntAndNotInPlace = 0;
+    let notCorrect = 0;
+
+    this.randomCombination.forEach((sign, index) => {
+      if (sign.id === combinationToCheck[index]?.id) {
+        correctAndInPlace++;
+      }
+      if (!combinationToCheck.some(s => s?.id === sign.id)) {
+        notCorrect++;
+      }
+    });
+
+    correntAndNotInPlace = 4 - correctAndInPlace - notCorrect;
+
+    return {
+      correctAndInPlace,
+      correntAndNotInPlace,
+      notCorrect
+    }
+  }
+
+  private _getRandomNumber() {
+    return Math.floor(Math.random() * 6) + 1;
+  }
+
+  private _getRadnomCombination(): Sign[] {
+    return [null, null, null, null].map(() => {
+      const rn = this._getRandomNumber();
+      const sign = this.availableSigns.find(sign => sign.id === rn);
+      return sign || this.availableSigns[0];
+    });
   }
 }

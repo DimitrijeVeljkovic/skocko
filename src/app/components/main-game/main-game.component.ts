@@ -15,6 +15,7 @@ export class MainGameComponent implements OnInit {
   constructor(private _gameplayService: GameplayService) { }
 
   ngOnInit(): void {
+    this._gameplayService.saveRandomCombination();
   }
 
 }

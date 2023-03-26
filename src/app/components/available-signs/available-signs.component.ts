@@ -12,7 +12,7 @@ export class AvailableSignsComponent implements OnInit {
   }
 
   public get shouldDisableButtons() {
-    return this._gameplayService.allCombinations[this._gameplayService.currentTry].every(sign => sign !== null);
+    return this._gameplayService.allCombinations[this._gameplayService.currentTry]?.every(sign => sign !== null);
   }
 
   constructor(private _gameplayService: GameplayService) { }

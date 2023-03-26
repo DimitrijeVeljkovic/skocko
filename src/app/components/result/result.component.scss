@@ -4,8 +4,20 @@
     display: flex;
     gap: 10px;
 
+    @media only screen and (max-width: 600px) {
+        width: 140px;
+        gap: 5px;
+    }
+
     button {
         height: 100%;
+    }
+
+    ::ng-deep .mat-raised-button {
+        @media only screen and (max-width: 600px) {
+            padding: 0 2px;
+            min-width: unset;
+        }
     }
 
     .result {
@@ -15,19 +27,28 @@
         align-items: center;
         justify-content: space-between;
 
+        @media only screen and (max-width: 600px) {
+            width: 100px;
+        }
+
         div {
             background-color: #EAECEE;
             width: 30px;
             height: 100%;
             border-radius: 8px;
             box-shadow: 2px 2px 3px rgb(0,0,0,0.2);
+
+            @media only screen and (max-width: 600px) {
+                width: 23px;
+                height: 80%;
+            }
         }
 
-        .a {
+        .correct-in-place {
            background-color: #28B463; 
         }
 
-        .b {
+        .correct-not-in-place {
             background-color: #F1C40F;
         }
     }

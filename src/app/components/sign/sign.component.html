@@ -3,7 +3,7 @@
         [ngStyle]="{'background-color': sign.color}"
         [disabled]="signDisabled"
         (click)="handleClickSign()">
-    <mat-icon>{{ sign.icon }}</mat-icon>
+    <span>{{ sign.icon }}</span>
 </button>
 
 <ng-template #empty>

@@ -8,7 +8,7 @@ import { GameplayService } from 'src/app/services/gameplay.service';
   styleUrls: ['./combination.component.scss']
 })
 export class CombinationComponent implements OnInit {
-  @Input() public combination: (Sign | null)[]; 
+  @Input() public combination: (Sign | null)[];
   @Input() public indexOfCombination: number;
   public combinationDisabled: boolean;
 
