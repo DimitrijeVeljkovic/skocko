@@ -21,6 +21,8 @@ export class GameplayService {
   public tryFiveCombination: (Sign | null)[] = [null, null, null, null];
   public trySixCombination: (Sign | null)[] = [null, null, null, null];
 
+  public currentTry: number = 0;
+
   public get allCombinations() {
     return [
       this.tryOneCombination,
@@ -49,5 +51,9 @@ export class GameplayService {
   public removeSignFromCombination(sign: Sign | null, indexOfCombination: number, indexInCombination: number) {
     this.allCombinations[indexOfCombination][indexInCombination] = null;
     return;
+  }
+
+  public increaseCurrentTry() {
+    this.currentTry++;
   }
 }

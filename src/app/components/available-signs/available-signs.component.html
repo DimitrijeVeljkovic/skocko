@@ -1,4 +1,5 @@
 <div>
     <app-sign *ngFor="let sign of availableSigns"
-              [sign]="sign"></app-sign>
+              [sign]="sign"
+              [signDisabled]="shouldDisableButtons"></app-sign>
 </div>

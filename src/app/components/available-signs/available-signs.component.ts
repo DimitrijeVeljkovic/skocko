@@ -11,6 +11,10 @@ export class AvailableSignsComponent implements OnInit {
     return this._gameplayService.availableSigns;
   }
 
+  public get shouldDisableButtons() {
+    return this._gameplayService.allCombinations[this._gameplayService.currentTry].every(sign => sign !== null);
+  }
+
   constructor(private _gameplayService: GameplayService) { }
 
   ngOnInit(): void {

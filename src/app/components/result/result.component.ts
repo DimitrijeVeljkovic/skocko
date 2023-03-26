@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Sign } from 'src/app/interfaces/sign.interface';
+import { GameplayService } from 'src/app/services/gameplay.service';
 
 @Component({
   selector: 'app-result',
@@ -15,7 +16,7 @@ export class ResultComponent implements OnInit {
     return this.combination.includes(null);
   }
 
-  constructor() { }
+  constructor(private _gameplayService: GameplayService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,7 @@ export class ResultComponent implements OnInit {
   public handleCheck() {
     this.buttonClicked = true;
     this.disableCombination.emit(true);
+    this._gameplayService.increaseCurrentTry();
   }
 
 }
