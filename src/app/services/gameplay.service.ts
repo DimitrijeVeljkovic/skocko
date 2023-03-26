@@ -10,11 +10,11 @@ export class GameplayService {
 
   public availableSigns: Sign[] = [
     { id: 1, name: 'knight', icon: '♞', color: '#3498DB' },
-    { id: 2, name: 'club', icon: '♣️', color: '#2C3E50' },
-    { id: 3, name: 'spade', icon: '♠️', color: '#2C3E50' },
-    { id: 4, name: 'heart', icon: '♥️', color: '#E74C3C' },
-    { id: 5, name: 'diamond', icon: '♦️', color: '#E74C3C' },
-    { id: 6, name: 'star', icon: '★', color: '#F1C40F' },
+    { id: 2, name: 'club', icon: '♧', color: '#2C3E50' },
+    { id: 3, name: 'spade', icon: '♤', color: '#2C3E50' },
+    { id: 4, name: 'heart', icon: '♡', color: '#E74C3C' },
+    { id: 5, name: 'diamond', icon: '♢', color: '#E74C3C' },
+    { id: 6, name: 'star', icon: '★', color: '#F1C40F' }
   ];
 
   public tryOneCombination: (Sign | null)[] = [null, null, null, null];
