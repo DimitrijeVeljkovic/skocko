@@ -1,0 +1,16 @@
+<mat-card class="main-game">
+    <mat-card-header>
+        <mat-card-title>
+            Skocko
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngFor="let combination of allCombinations; let i = index;">
+            <app-combination [combination]="combination"
+                             [indexOfCombination]="i"></app-combination>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <app-available-signs class="main-game__actions"></app-available-signs>
+    </mat-card-actions>
+</mat-card>

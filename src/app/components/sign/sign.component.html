@@ -1,0 +1,12 @@
+<button mat-fab
+        *ngIf="sign; else empty"
+        [ngStyle]="{'background-color': sign.color}"
+        [disabled]="signDisabled"
+        (click)="handleClickSign()">
+    <mat-icon>{{ sign.icon }}</mat-icon>
+</button>
+
+<ng-template #empty>
+    <button mat-fab [ngStyle]="{'background-color': '#EAECEE'}">
+    </button>
+</ng-template>

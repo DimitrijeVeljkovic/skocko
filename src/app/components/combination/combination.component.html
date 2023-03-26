@@ -1,0 +1,11 @@
+<div class="combination-result">
+    <app-sign *ngFor="let sign of combination; let i = index;"
+          (removeSign)="removeSignFromCombination($event, i)"
+          [sign]="sign"
+          [disableClick]="true"
+          [signDisabled]="combinationDisabled"></app-sign>
+
+    <app-result [combination]="combination"
+                (disableCombination)="disableCombination($event)"></app-result>
+</div>
+

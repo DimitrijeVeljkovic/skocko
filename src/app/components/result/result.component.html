@@ -1,0 +1,9 @@
+<button mat-raised-button (click)="handleCheck()" [disabled]="disableButton || buttonClicked">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+</button>
+<div *ngIf="buttonClicked" class="result">
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c"></div>
+    <div class="d"></div>
+</div>
